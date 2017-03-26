@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:schema xmlns:p="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.dalgim.com/namespace/personservice/general"
+            xmlns:datatypes="http://www.dalgim.com/namespace/personservice/datatypes"
+            xmlns:general="http://www.dalgim.com/namespace/personservice/general"
+            targetNamespace="http://www.dalgim.com/namespace/personservice/general"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <p:import namespace="http://www.dalgim.com/namespace/personservice/datatypes"
+              schemaLocation="person-datatypes.xsd"/>
+
+    <p:element name="GetPersonInfo">
+        <p:complexType>
+            <p:sequence>
+                <p:element minOccurs="1" maxOccurs="1" name="login" type="p:string"/>
+            </p:sequence>
+        </p:complexType>
+    </p:element>
+
+    <p:element name="GetPersonInfoResponse">
+        <p:complexType>
+            <p:sequence>
+                <p:element maxOccurs="1" minOccurs="1" name="PersonInfo" type="datatypes:PersonInfo"/>
+            </p:sequence>
+        </p:complexType>
+    </p:element>
+
+</p:schema>

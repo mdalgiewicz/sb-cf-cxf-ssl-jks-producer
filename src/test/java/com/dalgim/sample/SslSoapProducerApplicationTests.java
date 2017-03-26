@@ -1,7 +1,7 @@
 package com.dalgim.sample;
 
 import com.dalgim.sample.soap.SslSoapProducerApplication;
-import com.dalgim.sample.soap.service.PersonService;
+import com.dalgim.sample.soap.service.PersonGateway;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +13,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class SslSoapProducerApplicationTests {
 
 	@Autowired
-	private PersonService personService;
+	private PersonGateway personGateway;
 
 	@Test
 	public void contextLoads() {
-		personService.getAllPersons();
+		personGateway.getAllPersons();
 		System.out.println();
 		assert true;
 	}

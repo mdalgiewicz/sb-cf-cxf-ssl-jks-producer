@@ -4,20 +4,19 @@ import com.dalgim.sample.soap.dto.PersonDTO
 import com.dalgim.sample.soap.mapper.PersonMapper
 import com.dalgim.sample.soap.model.Person
 import com.dalgim.sample.soap.repository.PersonRepository
-import com.google.common.collect.Lists
 import spock.lang.Specification
 
 /**
  * Created by dalgim on 25.03.2017.
  */
-class PersonServiceImplTest extends Specification {
+class PersonGatewayImplTest extends Specification {
 
-    PersonService personService
+    PersonGateway personService
     PersonRepository personRepository
 
     void setup() {
         personRepository = Mock(PersonRepository)
-        personService = new PersonServiceImpl(personRepository, new PersonMapper())
+        personService = new PersonGatewayImpl(personRepository, new PersonMapper())
     }
 
     def "should create new Person"() {
@@ -53,7 +52,7 @@ class PersonServiceImplTest extends Specification {
         and:
             personRepository.findAll() >> personLists
         when:
-            List<PersonDTO> personDTOList = personService.getAllPersons()
+            List<PersonDTO> personDTOList = personGateway.getAllPersons()
         then:
             1 * personRepository.findAll()
             personDTOList != null

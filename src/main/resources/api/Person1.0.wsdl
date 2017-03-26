@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:p="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:person="http://www.dalgim.com/namespace/personservice/"
+                  xmlns:general="http://www.dalgim.com/namespace/personservice/general"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  targetNamespace="http://www.dalgim.com/namespace/personservice/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:types>
+        <p:schema xmlns="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="http://www.dalgim.com/namespace/personservice/"
+                  attributeFormDefault="qualified"
+                  elementFormDefault="qualified">
+            <p:include schemaLocation="Person1.0.xsd"/>
+        </p:schema>
+    </wsdl:types>
+    <wsdl:message name="GetPersonInfoIn">
+        <wsdl:part name="parameters" element="general:GetPersonInfo"/>
+    </wsdl:message>
+    <wsdl:message name="GetPersonInfoOut">
+        <wsdl:part name="parameters" element="general:GetPersonInfoResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="PersonService">
+        <wsdl:operation name="GetPersonInformation">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets information for Person by login</wsdl:documentation>
+            <wsdl:input message="person:GetPersonInfoIn"/>
+            <wsdl:output message="person:GetPersonInfoOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="PersonService" type="person:PersonService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetPersonInformation">
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="Person">
+        <wsdl:port name="PersonService" binding="person:PersonService">
+            <soap:address location="http://localhost:8080/api/PersonService_1.0"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

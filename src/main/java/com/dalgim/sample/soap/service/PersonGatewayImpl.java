@@ -18,12 +18,12 @@ import java.util.stream.StreamSupport;
  */
 @Service
 @Transactional
-public class PersonServiceImpl implements PersonService {
+public class PersonGatewayImpl implements PersonGateway {
 
     private final PersonRepository personRepository;
     private final PersonMapper personMapper;
 
-    public PersonServiceImpl(PersonRepository personRepository, PersonMapper personMapper) {
+    public PersonGatewayImpl(PersonRepository personRepository, PersonMapper personMapper) {
         this.personRepository = personRepository;
         this.personMapper = personMapper;
     }

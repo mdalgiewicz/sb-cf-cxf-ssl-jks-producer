@@ -7,7 +7,7 @@ import java.util.Optional;
 /**
  * Created by dalgim on 25.03.2017.
  */
-public interface PersonService {
+public interface PersonGateway {
 
     Optional<PersonDTO> findPersonByLogin(String login);
     void createPerson(PersonDTO personDTO);
