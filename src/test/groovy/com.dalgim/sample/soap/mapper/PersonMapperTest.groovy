@@ -9,10 +9,10 @@ import spock.lang.Specification
  */
 class PersonMapperTest extends Specification {
 
-    PersonMapper personMapper;
+    PersonMapper personMapper
 
     void setup() {
-        personMapper = new PersonMapper();
+        personMapper = new PersonMapper()
     }
 
     def "should map Person into PersonDTO"() {

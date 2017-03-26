@@ -7,7 +7,6 @@ import com.dalgim.sample.soap.repository.PersonRepository;
 import com.google.common.base.Preconditions;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
