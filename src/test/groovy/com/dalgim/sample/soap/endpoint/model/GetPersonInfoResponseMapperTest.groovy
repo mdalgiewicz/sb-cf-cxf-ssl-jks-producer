@@ -1,7 +1,7 @@
 package com.dalgim.sample.soap.endpoint.model
 
 import com.dalgim.namespace.personservice.general.GetPersonInfoResponse
-import com.dalgim.sample.soap.dto.PersonDTO
+import com.dalgim.sample.soap.domain.Person
 import spock.lang.Specification
 
 /**
@@ -16,22 +16,22 @@ class GetPersonInfoResponseMapperTest extends Specification {
 
     }
 
-    def "should map PersonDTO into GetPersonInfoResponse."() {
+    def "should map Person into GetPersonInfoResponse."() {
         given:
-            def personDTO = PersonDTO.builder()
+            def person = Person.builder()
                     .firstname('John')
                     .lastname('Smith')
                     .login('John.Smith')
                     .password('xxx')
                     .build()
         when:
-            GetPersonInfoResponse getPersonInfoResponse = getPersonInfoResponseMapper.map(personDTO)
+            GetPersonInfoResponse getPersonInfoResponse = getPersonInfoResponseMapper.map(person)
         then:
             getPersonInfoResponseMapper != null
-            personDTO.getFirstname() == getPersonInfoResponse.getFirstname()
-            personDTO.getLastname() == getPersonInfoResponse.getLastname()
-            personDTO.getLogin() == getPersonInfoResponse.getLogin()
-            personDTO.getPassword() == getPersonInfoResponse.getPassword()
+            person.getFirstname() == getPersonInfoResponse.getFirstname()
+            person.getLastname() == getPersonInfoResponse.getLastname()
+            person.getLogin() == getPersonInfoResponse.getLogin()
+            person.getPassword() == getPersonInfoResponse.getPassword()
     }
 
     def "should return null when PersonDTO is null"() {

@@ -1,10 +1,9 @@
 package com.dalgim.sample.soap.service
 
-import com.dalgim.sample.soap.dto.PersonDTO
+import com.dalgim.sample.soap.domain.Person
 import com.dalgim.sample.soap.mapper.PersonMapper
-import com.dalgim.sample.soap.model.Person
+import com.dalgim.sample.soap.entity.PersonEntity
 import com.dalgim.sample.soap.repository.PersonRepository
-import com.google.common.collect.Lists
 import spock.lang.Specification
 
 /**
@@ -22,38 +21,43 @@ class PersonGatewayImplTest extends Specification {
 
     def "should create new Person"() {
         given:
-            PersonDTO personDto = PersonDTO.builder()
+            Person person = Person.builder()
                     .firstname('John')
                     .lastname('Smith')
                     .login('John.Smith')
                     .password('seret')
                     .build()
         when:
-            personGateway.createPerson(personDto)
+            def personAfterCreate = personGateway.createPerson(person)
         then:
-            1 * personRepository.save(_ as Person)
+            1 * personRepository.save(_ as PersonEntity)
+            personAfterCreate != null
+            personAfterCreate.getFirstname() == person.getFirstname()
+            personAfterCreate.getLastname() == person.getLastname()
+            personAfterCreate.getLogin() == person.getLogin()
+            personAfterCreate.getPassword() == person.getPassword()
     }
 
     def "should finds all persons"() {
       /*  given:
-            Person person1 = Person.builder()
+            PersonEntity person1 = PersonEntity.builder()
                     .firstname('John1')
                     .lastname('Smith1')
                     .login('John1.Smith1')
                     .password('seret')
                     .build()
-            Person person2 = Person.builder()
+            PersonEntity person2 = PersonEntity.builder()
                     .firstname('John2')
                     .lastname('Smith2')
                     .login('John2.Smith2')
                     .password('seret')
                     .build()
-            List<Person> personLists = Lists.newArrayList(person1, person2)
+            List<PersonEntity> personLists = Lists.newArrayList(person1, person2)
             PersonMapper personMapper = new PersonMapper()
         and:
             personRepository.findAll() >> {x -> [person1, person2]}
         when:
-            List<PersonDTO> personDTOList = personGateway.getAllPersons()
+            List<Person> personDTOList = personGateway.getAllPersons()
         then:
             1 * personRepository.findAll()
             personDTOList != null
@@ -64,22 +68,22 @@ class PersonGatewayImplTest extends Specification {
     def "should find person by login"() {
         given:
             String login = "John1.Smith1"
-        Person person = Person.builder()
+        PersonEntity personEntity = PersonEntity.builder()
                 .firstname('John1')
                 .lastname('Smith1')
                 .login('John1.Smith1')
                 .password('seret')
                 .build()
         and:
-            personRepository.findByLogin(login) >> person
+            personRepository.findByLogin(login) >> personEntity
         when:
-            Optional<PersonDTO> personDTO = personGateway.findPersonByLogin(login)
+            Optional<Person> person = personGateway.findPersonByLogin(login)
         then:
-            personDTO.isPresent()
-            personDTO.get().getLogin() == person.getLogin()
-            personDTO.get().getFirstname() == person.getFirstname()
-            personDTO.get().getLastname() == person.getLastname()
-            personDTO.get().getPassword() == person.getPassword()
+            person.isPresent()
+            person.get().getLogin() == personEntity.getLogin()
+            person.get().getFirstname() == personEntity.getFirstname()
+            person.get().getLastname() == personEntity.getLastname()
+            person.get().getPassword() == personEntity.getPassword()
     }
 
 }

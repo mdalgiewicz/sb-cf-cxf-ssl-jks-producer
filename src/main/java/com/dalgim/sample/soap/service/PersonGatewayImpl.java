@@ -1,8 +1,8 @@
 package com.dalgim.sample.soap.service;
 
-import com.dalgim.sample.soap.dto.PersonDTO;
+import com.dalgim.sample.soap.domain.Person;
+import com.dalgim.sample.soap.entity.PersonEntity;
 import com.dalgim.sample.soap.mapper.PersonMapper;
-import com.dalgim.sample.soap.model.Person;
 import com.dalgim.sample.soap.repository.PersonRepository;
 import com.google.common.base.Preconditions;
 import lombok.AllArgsConstructor;
@@ -25,24 +25,25 @@ public class PersonGatewayImpl implements PersonGateway {
     private final PersonMapper personMapper;
 
     @Override
-    public Optional<PersonDTO> findPersonByLogin(String login) {
+    public Optional<Person> findPersonByLogin(String login) {
         Preconditions.checkNotNull(login, "Login cannot be null.");
 
-        PersonDTO personDTO = personMapper.map(personRepository.findByLogin(login));
-        return Optional.ofNullable(personDTO);
+        Person person = personMapper.map(personRepository.findByLogin(login));
+        return Optional.ofNullable(person);
     }
 
     @Override
-    public void createPerson(PersonDTO personDTO) {
-        Preconditions.checkNotNull(personDTO, "PersonDto cannot be null.");
+    public Person createPerson(Person person) {
+        Preconditions.checkNotNull(person, "PersonDto cannot be null.");
 
-        Person person = personMapper.reverseMap(personDTO);
-        personRepository.save(person);
+        PersonEntity personEntity = personMapper.reverseMap(person);
+        personRepository.save(personEntity);
+        return personMapper.map(personEntity);
     }
 
     @Override
-    public Collection<PersonDTO> getAllPersons() {
-        Iterable<Person> allPersons = personRepository.findAll();
+    public Collection<Person> getAllPersons() {
+        Iterable<PersonEntity> allPersons = personRepository.findAll();
         return StreamSupport.stream(allPersons.spliterator(), false)
                 .map(personMapper::map)
                 .collect(Collectors.toList());

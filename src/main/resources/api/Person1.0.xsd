@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<p:schema xmlns:person="http://www.dalgim.com/namespace/personservice/"
+<p:schema xmlns:personEntity="http://www.dalgim.com/namespace/personservice/"
           xmlns:p="http://www.w3.org/2001/XMLSchema"
           xmlns:datatypes="http://www.dalgim.com/namespace/personservice/datatypes"
           targetNamespace="http://www.dalgim.com/namespace/personservice/"

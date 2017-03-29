@@ -1,7 +1,7 @@
 package com.dalgim.sample.soap.mapper
 
-import com.dalgim.sample.soap.dto.PersonDTO
-import com.dalgim.sample.soap.model.Person
+import com.dalgim.sample.soap.domain.Person
+import com.dalgim.sample.soap.entity.PersonEntity
 import spock.lang.Specification
 
 /**
@@ -15,7 +15,30 @@ class PersonMapperTest extends Specification {
         personMapper = new PersonMapper()
     }
 
-    def "should map Person into PersonDTO"() {
+    def "should map PersonEntity into Person."() {
+        given:
+            PersonEntity personEntity = PersonEntity.builder()
+                    .firstname('John')
+                    .lastname('Smith')
+                    .login('John.Smith')
+                    .password('seret')
+                    .build()
+        when:
+            Person person = personMapper.map(personEntity)
+        then:
+            person != null
+            person.getFirstname() == personEntity.getFirstname()
+            person.getLastname() == personEntity.getLastname()
+            person.getLogin() == personEntity.getLogin()
+            person.getPassword() == personEntity.getPassword()
+    }
+
+    def "should return null while PersonEntity is null."() {
+        expect:
+            personMapper.map(null) == null
+    }
+
+    def "should map Person into PersonEntity."() {
         given:
             Person person = Person.builder()
                     .firstname('John')
@@ -24,34 +47,19 @@ class PersonMapperTest extends Specification {
                     .password('seret')
                     .build()
         when:
-            PersonDTO personDTO = personMapper.map(person)
+            PersonEntity personEntiy = personMapper.reverseMap(person)
         then:
-            personDTO != null
-            personDTO.getFirstname() == person.getFirstname()
-            personDTO.getLastname() == person.getLastname()
-            personDTO.getLogin() == person.getLogin()
-            personDTO.getPassword() == person.getPassword()
+            personEntiy != null
+            personEntiy.getFirstname() == person.getFirstname()
+            personEntiy.getLastname() == person.getLastname()
+            personEntiy.getLogin() == person.getLogin()
+            personEntiy.getPassword() == person.getPassword()
+            personEntiy.getUuid() != null
+            personEntiy.getId() == null
     }
 
-    def "should map PersonDTO into Person"() {
-        given:
-            PersonDTO personDto = PersonDTO.builder()
-                    .firstname('John')
-                    .lastname('Smith')
-                    .login('John.Smith')
-                    .password('seret')
-                    .build()
-        when:
-        Person person = personMapper.reverseMap(personDto)
-        then:
-        person != null
-        person.getFirstname() == personDto.getFirstname()
-        person.getLastname() == personDto.getLastname()
-        person.getLogin() == personDto.getLogin()
-        person.getPassword() == personDto.getPassword()
-        person.getUuid() != null
-        person.getId() == null
-
-
+    def "should return null while Person is null"() {
+        expect:
+            personMapper.reverseMap(null) == null
     }
 }

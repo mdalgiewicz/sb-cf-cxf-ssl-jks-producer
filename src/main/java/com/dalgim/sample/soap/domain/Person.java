@@ -1,4 +1,4 @@
-package com.dalgim.sample.soap.dto;
+package com.dalgim.sample.soap.domain;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @Builder
 @EqualsAndHashCode
-public class PersonDTO {
+public class Person {
 
     private String login;
     private String password;

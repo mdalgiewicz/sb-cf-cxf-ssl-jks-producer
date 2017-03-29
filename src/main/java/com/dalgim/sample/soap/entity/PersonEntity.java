@@ -1,4 +1,4 @@
-package com.dalgim.sample.soap.model;
+package com.dalgim.sample.soap.entity;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 @Setter
 @Builder
 @Entity
-public class Person extends AbstractEntity {
+public class PersonEntity extends AbstractEntity {
 
     private String login;
     private String password;

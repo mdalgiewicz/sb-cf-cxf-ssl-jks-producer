@@ -1,7 +1,7 @@
 package com.dalgim.sample.soap.mapper;
 
-import com.dalgim.sample.soap.dto.PersonDTO;
-import com.dalgim.sample.soap.model.Person;
+import com.dalgim.sample.soap.domain.Person;
+import com.dalgim.sample.soap.entity.PersonEntity;
 import com.google.common.base.Preconditions;
 import org.springframework.stereotype.Component;
 
@@ -9,29 +9,33 @@ import org.springframework.stereotype.Component;
  * Created by dalgim on 25.03.2017.
  */
 @Component
-public class PersonMapper implements ObjectMapper<PersonDTO, Person> {
+public class PersonMapper implements ObjectMapper<Person, PersonEntity> {
 
     @Override
-    public PersonDTO map(Person person) {
-        Preconditions.checkNotNull(person, "Person cannot be null.");
+    public Person map(PersonEntity personEntity) {
+        if (personEntity == null) {
+            return null;
+        }
 
-        return PersonDTO.builder()
-                .firstname(person.getFirstname())
-                .lastname(person.getLastname())
-                .login(person.getLogin())
-                .password(person.getPassword())
+        return Person.builder()
+                .firstname(personEntity.getFirstname())
+                .lastname(personEntity.getLastname())
+                .login(personEntity.getLogin())
+                .password(personEntity.getPassword())
                 .build();
     }
 
     @Override
-    public Person reverseMap(PersonDTO personDTO) {
-        Preconditions.checkNotNull(personDTO, "PersonDTO cannot be null.");
+    public PersonEntity reverseMap(Person person) {
+        if (person == null) {
+            return null;
+        }
 
-        return Person.builder()
-                .firstname(personDTO.getFirstname())
-                .lastname(personDTO.getLastname())
-                .login(personDTO.getLogin())
-                .password(personDTO.getPassword())
+        return PersonEntity.builder()
+                .firstname(person.getFirstname())
+                .lastname(person.getLastname())
+                .login(person.getLogin())
+                .password(person.getPassword())
                 .build();
     }
 }

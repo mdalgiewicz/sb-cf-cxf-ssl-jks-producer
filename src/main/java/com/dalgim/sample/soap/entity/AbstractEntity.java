@@ -1,4 +1,4 @@
-package com.dalgim.sample.soap.model;
+package com.dalgim.sample.soap.entity;
 
 import lombok.Getter;
 import lombok.Setter;

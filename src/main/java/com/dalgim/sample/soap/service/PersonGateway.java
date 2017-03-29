@@ -1,6 +1,7 @@
 package com.dalgim.sample.soap.service;
 
-import com.dalgim.sample.soap.dto.PersonDTO;
+import com.dalgim.sample.soap.domain.Person;
+
 import java.util.Collection;
 import java.util.Optional;
 
@@ -9,7 +10,7 @@ import java.util.Optional;
  */
 public interface PersonGateway {
 
-    Optional<PersonDTO> findPersonByLogin(String login);
-    void createPerson(PersonDTO personDTO);
-    Collection<PersonDTO> getAllPersons();
+    Optional<Person> findPersonByLogin(String login);
+    Person createPerson(Person person);
+    Collection<Person> getAllPersons();
 }
