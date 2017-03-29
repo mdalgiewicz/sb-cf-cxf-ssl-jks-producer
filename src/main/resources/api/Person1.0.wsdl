@@ -19,7 +19,7 @@
         </p:schema>
     </wsdl:types>
     <wsdl:message name="GetPersonInfoIn">
-        <wsdl:part name="parameters" element="general:GetPersonInfo"/>
+        <wsdl:part name="parameters" element="general:GetPersonInfoRequest"/>
     </wsdl:message>
     <wsdl:message name="GetPersonInfoOut">
         <wsdl:part name="parameters" element="general:GetPersonInfoResponse"/>

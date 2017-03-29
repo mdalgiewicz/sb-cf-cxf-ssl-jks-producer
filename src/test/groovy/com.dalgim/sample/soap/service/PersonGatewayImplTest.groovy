@@ -4,6 +4,7 @@ import com.dalgim.sample.soap.dto.PersonDTO
 import com.dalgim.sample.soap.mapper.PersonMapper
 import com.dalgim.sample.soap.model.Person
 import com.dalgim.sample.soap.repository.PersonRepository
+import com.google.common.collect.Lists
 import spock.lang.Specification
 
 /**
@@ -11,12 +12,12 @@ import spock.lang.Specification
  */
 class PersonGatewayImplTest extends Specification {
 
-    PersonGateway personService
+    PersonGateway personGateway
     PersonRepository personRepository
 
     void setup() {
         personRepository = Mock(PersonRepository)
-        personService = new PersonGatewayImpl(personRepository, new PersonMapper())
+        personGateway = new PersonGatewayImpl(personRepository, new PersonMapper())
     }
 
     def "should create new Person"() {
@@ -28,13 +29,13 @@ class PersonGatewayImplTest extends Specification {
                     .password('seret')
                     .build()
         when:
-            personService.createPerson(personDto)
+            personGateway.createPerson(personDto)
         then:
             1 * personRepository.save(_ as Person)
     }
 
     def "should finds all persons"() {
-       /* given:
+      /*  given:
             Person person1 = Person.builder()
                     .firstname('John1')
                     .lastname('Smith1')
@@ -50,7 +51,7 @@ class PersonGatewayImplTest extends Specification {
             List<Person> personLists = Lists.newArrayList(person1, person2)
             PersonMapper personMapper = new PersonMapper()
         and:
-            personRepository.findAll() >> personLists
+            personRepository.findAll() >> {x -> [person1, person2]}
         when:
             List<PersonDTO> personDTOList = personGateway.getAllPersons()
         then:
@@ -72,7 +73,7 @@ class PersonGatewayImplTest extends Specification {
         and:
             personRepository.findByLogin(login) >> person
         when:
-            Optional<PersonDTO> personDTO = personService.findPersonByLogin(login)
+            Optional<PersonDTO> personDTO = personGateway.findPersonByLogin(login)
         then:
             personDTO.isPresent()
             personDTO.get().getLogin() == person.getLogin()
@@ -80,4 +81,5 @@ class PersonGatewayImplTest extends Specification {
             personDTO.get().getLastname() == person.getLastname()
             personDTO.get().getPassword() == person.getPassword()
     }
+
 }

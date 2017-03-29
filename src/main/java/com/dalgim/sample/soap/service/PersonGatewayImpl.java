@@ -5,6 +5,7 @@ import com.dalgim.sample.soap.mapper.PersonMapper;
 import com.dalgim.sample.soap.model.Person;
 import com.dalgim.sample.soap.repository.PersonRepository;
 import com.google.common.base.Preconditions;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
@@ -17,15 +18,11 @@ import java.util.stream.StreamSupport;
  */
 @Service
 @Transactional
+@AllArgsConstructor
 public class PersonGatewayImpl implements PersonGateway {
 
     private final PersonRepository personRepository;
     private final PersonMapper personMapper;
-
-    public PersonGatewayImpl(PersonRepository personRepository, PersonMapper personMapper) {
-        this.personRepository = personRepository;
-        this.personMapper = personMapper;
-    }
 
     @Override
     public Optional<PersonDTO> findPersonByLogin(String login) {
