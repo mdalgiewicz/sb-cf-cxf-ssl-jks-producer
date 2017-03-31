@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:schema xmlns:personEntity="http://www.dalgim.com/namespace/personservice/"
           xmlns:p="http://www.w3.org/2001/XMLSchema"
-          xmlns:datatypes="http://www.dalgim.com/namespace/personservice/datatypes"
           targetNamespace="http://www.dalgim.com/namespace/personservice/"
           elementFormDefault="qualified"
           version="1.0">
 
     <p:import namespace="http://www.dalgim.com/namespace/personservice/general"
               schemaLocation="Person-Schemas/person-general.xsd"/>
-
 
 </p:schema>

@@ -17,7 +17,7 @@
         </jxb:bindings>
     </jxb:bindings>
 
-    <jxb:bindings schemaLocation="Person-Schemas/personEntity-general.xsd">
+    <jxb:bindings schemaLocation="Person-Schemas/person-general.xsd">
         <jxb:schemaBindings>
             <jxb:package name="com.dalgim.namespace.personservice.general"/>
         </jxb:schemaBindings>
@@ -25,15 +25,5 @@
             <namespace:prefix name="general"/>
         </jxb:bindings>
     </jxb:bindings>
-
-    <jxb:bindings schemaLocation="Person-Schemas/personEntity-datatypes.xsd">
-        <jxb:schemaBindings>
-            <jxb:package name="com.dalgim.namespace.personservice.datatypes"/>
-        </jxb:schemaBindings>
-        <jxb:bindings>
-            <namespace:prefix name="datatypes"/>
-        </jxb:bindings>
-    </jxb:bindings>
-
 
 </jxb:bindings>

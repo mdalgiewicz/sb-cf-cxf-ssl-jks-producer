@@ -1,4 +1,4 @@
-package com.dalgim.sample.soap.endpoint.model
+package com.dalgim.sample.soap.endpoint.mapper
 
 import com.dalgim.sample.soap.domain.Person
 import spock.lang.Specification
