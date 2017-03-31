@@ -16,7 +16,7 @@ class GetPersonInfoResponseMapperTest extends Specification {
 
     }
 
-    def "should map Person into GetPersonInfoResponse."() {
+    def "should map Person into GetPersonInfoResponse"() {
         given:
             def person = Person.builder()
                     .firstname('John')

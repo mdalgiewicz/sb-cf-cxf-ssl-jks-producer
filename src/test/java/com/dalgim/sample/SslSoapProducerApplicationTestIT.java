@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SslSoapProducerApplication.class)
-public class SslSoapProducerApplicationTests {
+public class SslSoapProducerApplicationTestIT {
 
 	@Test
 	public void contextLoads() {

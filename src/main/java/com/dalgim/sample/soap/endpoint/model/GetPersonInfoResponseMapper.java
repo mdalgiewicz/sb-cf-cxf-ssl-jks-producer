@@ -15,6 +15,7 @@ public class GetPersonInfoResponseMapper implements EndpointObjectOutMapper<GetP
         if (domainModel == null) {
             return null;
         }
+
         GetPersonInfoResponse getPersonInfoResponse = new GetPersonInfoResponse();
         getPersonInfoResponse.setLogin(domainModel.getLogin());
         getPersonInfoResponse.setFirstname(domainModel.getFirstname());

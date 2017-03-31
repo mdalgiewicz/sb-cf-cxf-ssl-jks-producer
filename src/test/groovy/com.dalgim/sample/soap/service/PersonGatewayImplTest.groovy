@@ -13,10 +13,12 @@ class PersonGatewayImplTest extends Specification {
 
     PersonGateway personGateway
     PersonRepository personRepository
+    PersonMapper personMapper
 
     void setup() {
+        personMapper = new PersonMapper()
         personRepository = Mock(PersonRepository)
-        personGateway = new PersonGatewayImpl(personRepository, new PersonMapper())
+        personGateway = new PersonGatewayImpl(personRepository, personMapper)
     }
 
     def "should create new Person"() {
@@ -38,8 +40,8 @@ class PersonGatewayImplTest extends Specification {
             personAfterCreate.getPassword() == person.getPassword()
     }
 
-    def "should finds all persons"() {
-      /*  given:
+    def "should returns all Persons"() {
+        given:
             PersonEntity person1 = PersonEntity.builder()
                     .firstname('John1')
                     .lastname('Smith1')
@@ -52,20 +54,18 @@ class PersonGatewayImplTest extends Specification {
                     .login('John2.Smith2')
                     .password('seret')
                     .build()
-            List<PersonEntity> personLists = Lists.newArrayList(person1, person2)
-            PersonMapper personMapper = new PersonMapper()
         and:
-            personRepository.findAll() >> {x -> [person1, person2]}
+            personRepository.findAll() >> [person1, person2]
         when:
-            List<Person> personDTOList = personGateway.getAllPersons()
+            def personDTOList = personGateway.getAllPersons()
         then:
-            1 * personRepository.findAll()
             personDTOList != null
             personDTOList.size() == 2
-            personDTOList.contains(personMapper.map(person1))*/
+            personDTOList.contains(personMapper.map(person1))
+            personDTOList.contains(personMapper.map(person2))
     }
 
-    def "should find person by login"() {
+    def "should find Person by login"() {
         given:
             String login = "John1.Smith1"
         PersonEntity personEntity = PersonEntity.builder()

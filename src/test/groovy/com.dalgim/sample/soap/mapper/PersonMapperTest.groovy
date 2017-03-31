@@ -58,7 +58,7 @@ class PersonMapperTest extends Specification {
             personEntiy.getId() == null
     }
 
-    def "should return null while Person is null"() {
+    def "should return null while Person is null."() {
         expect:
             personMapper.reverseMap(null) == null
     }
