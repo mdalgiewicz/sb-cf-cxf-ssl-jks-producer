@@ -26,10 +26,10 @@ class CreatePersonResponseMapperTest extends Specification {
             def createPersonResponse = createPersonResponseMapper.map(person)
         then:
             createPersonResponse != null
-            createPersonResponse.getFirstname() == person.getFirstname()
-            createPersonResponse.getLogin() == person.getLogin()
-            createPersonResponse.getLastname() == person.getLastname()
-            createPersonResponse.getPassword() == person.getPassword()
+            createPersonResponse.getPersonInfo().getFirstname() == person.getFirstname()
+            createPersonResponse.getPersonInfo().getLogin() == person.getLogin()
+            createPersonResponse.getPersonInfo().getLastname() == person.getLastname()
+            createPersonResponse.getPersonInfo().getPassword() == person.getPassword()
     }
 
     def "should return null while CreatePersonRequest is null"() {

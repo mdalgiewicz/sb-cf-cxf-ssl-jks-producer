@@ -1,5 +1,6 @@
 package com.dalgim.sample.soap.endpoint.mapper;
 
+import com.dalgim.namespace.personservice.datatypes.PersonInfo;
 import com.dalgim.namespace.personservice.general.CreatePersonResponse;
 import com.dalgim.sample.soap.domain.Person;
 import org.springframework.stereotype.Component;
@@ -17,10 +18,12 @@ public class CreatePersonResponseMapper implements EndpointObjectOutMapper<Creat
         }
 
         CreatePersonResponse createPersonResponse = new CreatePersonResponse();
-        createPersonResponse.setFirstname(domainModel.getFirstname());
-        createPersonResponse.setLastname(domainModel.getLastname());
-        createPersonResponse.setLogin(domainModel.getLogin());
-        createPersonResponse.setPassword(domainModel.getPassword());
+        PersonInfo personInfo = new PersonInfo();
+        personInfo.setFirstname(domainModel.getFirstname());
+        personInfo.setLastname(domainModel.getLastname());
+        personInfo.setLogin(domainModel.getLogin());
+        personInfo.setPassword(domainModel.getPassword());
+        createPersonResponse.setPersonInfo(personInfo);
         return createPersonResponse;
     }
 }

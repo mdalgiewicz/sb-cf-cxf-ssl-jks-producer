@@ -12,14 +12,14 @@ public class CreatePersonRequestMapper implements EndpointObjectInMapper<CreateP
 
     @Override
     public Person map(CreatePersonRequest endpointModel) {
-        if (endpointModel == null) {
+        if (endpointModel == null || endpointModel.getPersonInfo() == null) {
             return null;
         }
         return Person.builder()
-                .firstname(endpointModel.getFirstname())
-                .lastname(endpointModel.getLastname())
-                .login(endpointModel.getLogin())
-                .password(endpointModel.getPassword())
+                .firstname(endpointModel.getPersonInfo().getFirstname())
+                .lastname(endpointModel.getPersonInfo().getLastname())
+                .login(endpointModel.getPersonInfo().getLogin())
+                .password(endpointModel.getPersonInfo().getPassword())
                 .build();
     }
 }

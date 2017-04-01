@@ -1,8 +1,8 @@
 package com.dalgim.sample.soap.config;
 
-import com.dalgim.namespace.personservice.Person;
-import com.dalgim.namespace.personservice.PersonService;
-import com.dalgim.sample.soap.endpoint.PersonServiceEndpoint;
+import com.dalgim.namespace.personservice.PersonEndpoint;
+import com.dalgim.namespace.personservice.PersonRegistry;
+import com.dalgim.sample.soap.endpoint.PersonRegistryImpl;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
 import javax.xml.ws.Endpoint;
@@ -32,20 +32,20 @@ public class WebServiceConfig {
     }
 
     @Bean
-    public PersonService personService() {
-        return new PersonServiceEndpoint();
+    public PersonRegistry personRegistry() {
+        return new PersonRegistryImpl();
     }
 
     @Bean
-    public Person person() {
-        return new Person();
+    public PersonEndpoint personEndpoint() {
+        return new PersonEndpoint();
     }
 
     @Bean
     public Endpoint endpoint() {
-        EndpointImpl endpoint = new EndpointImpl(springBus(), personService());
-        endpoint.setServiceName(person().getServiceName());
-        endpoint.setWsdlLocation(person().getWSDLDocumentLocation().toString());
+        EndpointImpl endpoint = new EndpointImpl(springBus(), personEndpoint());
+        endpoint.setServiceName(personEndpoint().getServiceName());
+        endpoint.setWsdlLocation(personEndpoint().getWSDLDocumentLocation().toString());
         endpoint.publish(SERVICE_URL_PARH);
         return endpoint;
     }

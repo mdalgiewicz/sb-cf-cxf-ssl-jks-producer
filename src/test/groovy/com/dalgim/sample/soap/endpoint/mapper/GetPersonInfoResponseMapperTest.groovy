@@ -28,10 +28,10 @@ class GetPersonInfoResponseMapperTest extends Specification {
             GetPersonInfoResponse getPersonInfoResponse = getPersonInfoResponseMapper.map(person)
         then:
             getPersonInfoResponseMapper != null
-            person.getFirstname() == getPersonInfoResponse.getFirstname()
-            person.getLastname() == getPersonInfoResponse.getLastname()
-            person.getLogin() == getPersonInfoResponse.getLogin()
-            person.getPassword() == getPersonInfoResponse.getPassword()
+            person.getFirstname() == getPersonInfoResponse.getPersonInfo().getFirstname()
+            person.getLastname() == getPersonInfoResponse.getPersonInfo().getLastname()
+            person.getLogin() == getPersonInfoResponse.getPersonInfo().getLogin()
+            person.getPassword() == getPersonInfoResponse.getPersonInfo().getPassword()
     }
 
     def "should return null when PersonDTO is null"() {

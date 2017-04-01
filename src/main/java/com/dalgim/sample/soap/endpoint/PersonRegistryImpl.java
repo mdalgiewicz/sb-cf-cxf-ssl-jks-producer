@@ -1,8 +1,9 @@
 package com.dalgim.sample.soap.endpoint;
 
-import com.dalgim.namespace.personservice.PersonService;
+import com.dalgim.namespace.personservice.PersonRegistry;
 import com.dalgim.namespace.personservice.general.CreatePersonRequest;
 import com.dalgim.namespace.personservice.general.CreatePersonResponse;
+import com.dalgim.namespace.personservice.general.GetAllPersonInfoResponse;
 import com.dalgim.namespace.personservice.general.GetPersonInfoRequest;
 import com.dalgim.namespace.personservice.general.GetPersonInfoResponse;
 import com.dalgim.sample.soap.domain.Person;
@@ -16,8 +17,8 @@ import javax.jws.WebService;
 /**
  * Created by dalgim on 26.03.2017.
  */
-@WebService(endpointInterface = "com.dalgim.namespace.personservice.PersonService", serviceName = "PersonService")
-public class PersonServiceEndpoint implements PersonService {
+@WebService(endpointInterface = "com.dalgim.namespace.personservice.Person", serviceName = "PersonService")
+public class PersonRegistryImpl implements PersonRegistry {
 
     private PersonGateway personGateway;
     private GetPersonInfoResponseMapper getPersonInfoResponseMapper;
@@ -25,16 +26,21 @@ public class PersonServiceEndpoint implements PersonService {
     private CreatePersonResponseMapper createPersonResponseMapper;
 
     @Override
-    public GetPersonInfoResponse getPersonInformation(GetPersonInfoRequest personInfoRequest) {
-        return personGateway.findPersonByLogin(personInfoRequest.getLogin())
+    public GetPersonInfoResponse getPersonInfo(GetPersonInfoRequest getPersonInfoRequest) {
+        return personGateway.findPersonByLogin(getPersonInfoRequest.getLogin())
                 .map(getPersonInfoResponseMapper::map)
                 .orElse(null);
     }
 
     @Override
     public CreatePersonResponse createPerson(CreatePersonRequest createPersonRequest) {
-        Person person = createPersonRequestMapper.map(createPersonRequest);
-        return createPersonResponseMapper.map(personGateway.createPerson(person));
+        Person createdPerson = personGateway.createPerson(createPersonRequestMapper.map(createPersonRequest));
+        return createPersonResponseMapper.map(personGateway.createPerson(createdPerson));
+    }
+
+    @Override
+    public GetAllPersonInfoResponse getAllPersonInfo(Object getAllPersonInfoRequest) {
+        return null;
     }
 
     @Autowired
