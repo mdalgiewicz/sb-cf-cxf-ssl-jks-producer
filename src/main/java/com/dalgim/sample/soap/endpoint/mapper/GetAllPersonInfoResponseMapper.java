@@ -24,7 +24,7 @@ public class GetAllPersonInfoResponseMapper implements EndpointObjectOutMapper<G
         GetAllPersonInfoResponse getAllPersonInfoResponse = new GetAllPersonInfoResponse();
         domainModelList.stream()
                 .map(getPersonInfoResponseMapper::map)
-                .forEach(getPersonInfoResponse -> getAllPersonInfoResponse.getPersons()
+                .forEach(getPersonInfoResponse -> getAllPersonInfoResponse.getPersonInfoList()
                         .add(getPersonInfoResponse.getPersonInfo()));
         return getAllPersonInfoResponse;
     }

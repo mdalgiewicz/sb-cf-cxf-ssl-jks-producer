@@ -1,0 +1,13 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <CreatePersonResponse xmlns="http://www.dalgim.com/namespace/personservice/general" xmlns:ns2="http://www.dalgim.com/namespace/personservice/datatypes">
+            <personInfo>
+                <ns2:login>John.Smith</ns2:login>
+                <ns2:firstname>John</ns2:firstname>
+                <ns2:lastname>Smith</ns2:lastname>
+                <ns2:password>P@ssw0rd</ns2:password>
+                <ns2:id>1</ns2:id>
+            </personInfo>
+        </CreatePersonResponse>
+    </soap:Body>
+</soap:Envelope>

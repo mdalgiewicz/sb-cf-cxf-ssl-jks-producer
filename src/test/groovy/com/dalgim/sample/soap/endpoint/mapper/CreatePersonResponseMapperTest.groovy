@@ -1,6 +1,7 @@
 package com.dalgim.sample.soap.endpoint.mapper
 
 import com.dalgim.sample.soap.domain.Person
+import com.dalgim.sample.soap.endpoint.mapper.CreatePersonResponseMapper
 import spock.lang.Specification
 
 /**

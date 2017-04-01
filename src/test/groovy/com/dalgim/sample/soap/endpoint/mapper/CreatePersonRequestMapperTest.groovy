@@ -2,6 +2,7 @@ package com.dalgim.sample.soap.endpoint.mapper
 
 import com.dalgim.namespace.personservice.datatypes.PersonInfo
 import com.dalgim.namespace.personservice.general.CreatePersonRequest
+import com.dalgim.sample.soap.endpoint.mapper.CreatePersonRequestMapper
 import spock.lang.Specification
 
 /**

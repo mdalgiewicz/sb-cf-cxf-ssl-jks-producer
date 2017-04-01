@@ -17,11 +17,11 @@ class PersonMapperTest extends Specification {
 
     def "should map PersonEntity into Person"() {
         given:
-            def personEntity = PersonEntity()
-            personEntity.firstname('John')
-            personEntity.lastname('Smith')
-            personEntity.login('John.Smith')
-            personEntity.password('secret')
+            def personEntity = new PersonEntity()
+            personEntity.setFirstname('John')
+            personEntity.setLastname('Smith')
+            personEntity.setLogin('John.Smith')
+            personEntity.setPassword('secret')
             personEntity.setId(10L)
         when:
             def person = personMapper.map(personEntity)

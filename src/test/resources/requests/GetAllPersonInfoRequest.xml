@@ -1,0 +1,6 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://www.dalgim.com/namespace/personservice/general">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <gen:GetAllPersonInfoRequest/>
+    </soapenv:Body>
+</soapenv:Envelope>

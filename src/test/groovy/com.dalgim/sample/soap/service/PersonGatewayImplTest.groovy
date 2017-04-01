@@ -42,16 +42,18 @@ class PersonGatewayImplTest extends Specification {
 
     def "should returns all Persons"() {
         given:
-            def person1 = PersonEntity()
-            person1.firstname('John1')
-            person1.lastname('Smith1')
-            person1.login('John1.Smith1')
-            person1.password('seret')
-            def person2 = PersonEntity()
-            person2.firstname('John2')
-            person2.lastname('Smith2')
-            person2.login('John2.Smith2')
-            person2.password('seret')
+            def person1 = new PersonEntity()
+            person1.setFirstname('John1')
+            person1.setLogin('Smith1')
+            person1.setLogin('John1.Smith1')
+            person1.setPassword('seret')
+            person1.setId(1L)
+            def person2 = new PersonEntity()
+            person2.setFirstname('John2')
+            person2.setLastname('Smith2')
+            person2.setLogin('John2.Smith2')
+            person2.setPassword('seret')
+            person2.setId(2L)
         and:
             personRepository.findAll() >> [person1, person2]
         when:
@@ -66,11 +68,12 @@ class PersonGatewayImplTest extends Specification {
     def "should find Person by login"() {
         given:
             def login = "John1.Smith1"
-            def personEntity = PersonEntity()
-            personEntity.firstname('John1')
-            personEntity.lastname('Smith1')
-            personEntity.login('John1.Smith1')
-            personEntity.password('seret')
+            def personEntity = new PersonEntity()
+            personEntity.setFirstname('John1')
+            personEntity.setLastname('Smith1')
+            personEntity.setLogin('John1.Smith1')
+            personEntity.setPassword('seret')
+            personEntity.setId(1L)
         and:
             personRepository.findByLogin(login) >> personEntity
         when:
@@ -81,6 +84,7 @@ class PersonGatewayImplTest extends Specification {
             person.get().getFirstname() == personEntity.getFirstname()
             person.get().getLastname() == personEntity.getLastname()
             person.get().getPassword() == personEntity.getPassword()
+            person.get().getId() == personEntity.getId()
     }
 
 }

@@ -48,7 +48,7 @@
     <p:element name="GetAllPersonInfoResponse">
         <p:complexType>
             <p:sequence>
-                <p:element maxOccurs="unbounded" minOccurs="0" nillable="true" name="persons" type="datatypes:PersonInfo"/>
+                <p:element maxOccurs="unbounded" minOccurs="0" nillable="true" name="PersonInfoList" type="datatypes:PersonInfo"/>
             </p:sequence>
         </p:complexType>
     </p:element>
