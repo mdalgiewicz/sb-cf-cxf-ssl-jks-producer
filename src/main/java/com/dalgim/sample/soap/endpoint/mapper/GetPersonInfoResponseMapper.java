@@ -23,6 +23,7 @@ public class GetPersonInfoResponseMapper implements EndpointObjectOutMapper<GetP
         personInfo.setFirstname(domainModel.getFirstname());
         personInfo.setLastname(domainModel.getLastname());
         personInfo.setPassword(domainModel.getPassword());
+        personInfo.setId(domainModel.getId());
         getPersonInfoResponse.setPersonInfo(personInfo);
         return getPersonInfoResponse;
     }

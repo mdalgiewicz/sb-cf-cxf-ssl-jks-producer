@@ -18,6 +18,7 @@ public class PersonMapper implements ObjectMapper<Person, PersonEntity> {
         }
 
         return Person.builder()
+                .id(personEntity.getId())
                 .firstname(personEntity.getFirstname())
                 .lastname(personEntity.getLastname())
                 .login(personEntity.getLogin())

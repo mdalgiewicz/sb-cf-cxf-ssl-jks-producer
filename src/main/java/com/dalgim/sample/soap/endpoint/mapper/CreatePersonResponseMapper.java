@@ -23,6 +23,7 @@ public class CreatePersonResponseMapper implements EndpointObjectOutMapper<Creat
         personInfo.setLastname(domainModel.getLastname());
         personInfo.setLogin(domainModel.getLogin());
         personInfo.setPassword(domainModel.getPassword());
+        personInfo.setId(domainModel.getId());
         createPersonResponse.setPersonInfo(personInfo);
         return createPersonResponse;
     }

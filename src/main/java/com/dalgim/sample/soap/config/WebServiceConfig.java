@@ -1,7 +1,7 @@
 package com.dalgim.sample.soap.config;
 
-import com.dalgim.namespace.personservice.PersonEndpoint;
 import com.dalgim.namespace.personservice.PersonRegistry;
+import com.dalgim.namespace.personservice.PersonRegistryService;
 import com.dalgim.sample.soap.endpoint.PersonRegistryImpl;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 public class WebServiceConfig {
 
     private static final String SERVLET_URL_PATH = "/api";
-    private static final String SERVICE_URL_PARH = "/PersonSoapService_1.0";
+    private static final String SERVICE_URL_PATH = "/PersonSoapService_1.0";
 
     @Bean
     public ServletRegistrationBean cxfServlet() {
@@ -37,16 +37,16 @@ public class WebServiceConfig {
     }
 
     @Bean
-    public PersonEndpoint personEndpoint() {
-        return new PersonEndpoint();
+    public PersonRegistryService personRegistryService() {
+        return new PersonRegistryService();
     }
 
     @Bean
     public Endpoint endpoint() {
-        EndpointImpl endpoint = new EndpointImpl(springBus(), personEndpoint());
-        endpoint.setServiceName(personEndpoint().getServiceName());
-        endpoint.setWsdlLocation(personEndpoint().getWSDLDocumentLocation().toString());
-        endpoint.publish(SERVICE_URL_PARH);
+        EndpointImpl endpoint = new EndpointImpl(springBus(), personRegistry());
+        endpoint.setServiceName(personRegistryService().getServiceName());
+        endpoint.setWsdlLocation(personRegistryService().getWSDLDocumentLocation().toString());
+        endpoint.publish(SERVICE_URL_PATH);
         return endpoint;
     }
 }

@@ -17,7 +17,9 @@ import javax.jws.WebService;
 /**
  * Created by dalgim on 26.03.2017.
  */
-@WebService(endpointInterface = "com.dalgim.namespace.personservice.Person", serviceName = "PersonService")
+@WebService(
+        targetNamespace = "http://www.dalgim.com/namespace/personservice/",
+        serviceName = "PersonRegistry")
 public class PersonRegistryImpl implements PersonRegistry {
 
     private PersonGateway personGateway;

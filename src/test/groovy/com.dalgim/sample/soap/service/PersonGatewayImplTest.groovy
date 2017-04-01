@@ -23,7 +23,7 @@ class PersonGatewayImplTest extends Specification {
 
     def "should create new Person"() {
         given:
-            Person person = Person.builder()
+            def person = Person.builder()
                     .firstname('John')
                     .lastname('Smith')
                     .login('John.Smith')
@@ -42,13 +42,13 @@ class PersonGatewayImplTest extends Specification {
 
     def "should returns all Persons"() {
         given:
-            PersonEntity person1 = PersonEntity.builder()
+            def person1 = PersonEntity.builder()
                     .firstname('John1')
                     .lastname('Smith1')
                     .login('John1.Smith1')
                     .password('seret')
                     .build()
-            PersonEntity person2 = PersonEntity.builder()
+            def person2 = PersonEntity.builder()
                     .firstname('John2')
                     .lastname('Smith2')
                     .login('John2.Smith2')
@@ -67,8 +67,8 @@ class PersonGatewayImplTest extends Specification {
 
     def "should find Person by login"() {
         given:
-            String login = "John1.Smith1"
-        PersonEntity personEntity = PersonEntity.builder()
+            def login = "John1.Smith1"
+            def personEntity = PersonEntity.builder()
                 .firstname('John1')
                 .lastname('Smith1')
                 .login('John1.Smith1')
@@ -77,7 +77,7 @@ class PersonGatewayImplTest extends Specification {
         and:
             personRepository.findByLogin(login) >> personEntity
         when:
-            Optional<Person> person = personGateway.findPersonByLogin(login)
+            def person = personGateway.findPersonByLogin(login)
         then:
             person.isPresent()
             person.get().getLogin() == personEntity.getLogin()

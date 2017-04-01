@@ -15,39 +15,41 @@ class PersonMapperTest extends Specification {
         personMapper = new PersonMapper()
     }
 
-    def "should map PersonEntity into Person."() {
+    def "should map PersonEntity into Person"() {
         given:
-            PersonEntity personEntity = PersonEntity.builder()
+            def personEntity = PersonEntity.builder()
                     .firstname('John')
                     .lastname('Smith')
                     .login('John.Smith')
-                    .password('seret')
+                    .password('secret')
                     .build()
+            personEntity.setId(10L)
         when:
-            Person person = personMapper.map(personEntity)
+            def person = personMapper.map(personEntity)
         then:
             person != null
             person.getFirstname() == personEntity.getFirstname()
             person.getLastname() == personEntity.getLastname()
             person.getLogin() == personEntity.getLogin()
             person.getPassword() == personEntity.getPassword()
+            person.getId() == personEntity.getId()
     }
 
-    def "should return null while PersonEntity is null."() {
+    def "should return null while PersonEntity is null"() {
         expect:
             personMapper.map(null) == null
     }
 
     def "should map Person into PersonEntity."() {
         given:
-            Person person = Person.builder()
+            def person = Person.builder()
                     .firstname('John')
                     .lastname('Smith')
                     .login('John.Smith')
                     .password('seret')
                     .build()
         when:
-            PersonEntity personEntiy = personMapper.reverseMap(person)
+            def personEntiy = personMapper.reverseMap(person)
         then:
             personEntiy != null
             personEntiy.getFirstname() == person.getFirstname()
@@ -58,7 +60,7 @@ class PersonMapperTest extends Specification {
             personEntiy.getId() == null
     }
 
-    def "should return null while Person is null."() {
+    def "should return null while Person is null"() {
         expect:
             personMapper.reverseMap(null) == null
     }

@@ -28,7 +28,10 @@
     <p:element name="CreatePersonRequest">
         <p:complexType>
             <p:sequence>
-                <p:element name="personInfo" type="datatypes:PersonInfo"/>
+                <p:element name="login" type="p:string"/>
+                <p:element name="firstname" type="p:string"/>
+                <p:element name="lastname" type="p:string"/>
+                <p:element name="password" type="p:string"/>
             </p:sequence>
         </p:complexType>
     </p:element>

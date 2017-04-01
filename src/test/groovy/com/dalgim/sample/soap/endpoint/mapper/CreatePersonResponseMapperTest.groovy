@@ -16,12 +16,13 @@ class CreatePersonResponseMapperTest extends Specification {
 
     def "should map CreatePersonRequest into Person"() {
         given:
-            Person person = Person.builder()
+            def person = Person.builder()
                     .firstname('John')
                     .lastname('Smith')
                     .login('John.Smith')
                     .password('xxx')
                     .build()
+            person.setId(10l)
         when:
             def createPersonResponse = createPersonResponseMapper.map(person)
         then:
@@ -30,6 +31,7 @@ class CreatePersonResponseMapperTest extends Specification {
             createPersonResponse.getPersonInfo().getLogin() == person.getLogin()
             createPersonResponse.getPersonInfo().getLastname() == person.getLastname()
             createPersonResponse.getPersonInfo().getPassword() == person.getPassword()
+            createPersonResponse.getPersonInfo().getId() == person.getId()
     }
 
     def "should return null while CreatePersonRequest is null"() {

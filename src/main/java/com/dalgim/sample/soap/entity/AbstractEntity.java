@@ -20,7 +20,7 @@ public abstract class AbstractEntity {
     private Long id;
     private final String uuid;
 
-    public AbstractEntity() {
+    AbstractEntity() {
         uuid = UUID.randomUUID().toString();
     }
 }

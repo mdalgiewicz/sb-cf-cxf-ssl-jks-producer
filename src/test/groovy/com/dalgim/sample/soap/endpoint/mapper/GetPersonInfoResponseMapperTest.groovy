@@ -24,6 +24,7 @@ class GetPersonInfoResponseMapperTest extends Specification {
                     .login('John.Smith')
                     .password('xxx')
                     .build()
+            person.setId(10l)
         when:
             GetPersonInfoResponse getPersonInfoResponse = getPersonInfoResponseMapper.map(person)
         then:
@@ -32,6 +33,7 @@ class GetPersonInfoResponseMapperTest extends Specification {
             person.getLastname() == getPersonInfoResponse.getPersonInfo().getLastname()
             person.getLogin() == getPersonInfoResponse.getPersonInfo().getLogin()
             person.getPassword() == getPersonInfoResponse.getPersonInfo().getPassword()
+            person.getId() == person.getId()
     }
 
     def "should return null when PersonDTO is null"() {

@@ -13,6 +13,7 @@
             <p:element name="firstname" type="p:string"/>
             <p:element name="lastname" type="p:string"/>
             <p:element name="password" type="p:string"/>
+            <p:element name="id" type="p:long"/>
         </p:sequence>
     </p:complexType>
 
