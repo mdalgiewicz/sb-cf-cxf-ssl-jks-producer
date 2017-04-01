@@ -7,13 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@Import({
-		WebServiceConfig.class
-})
+@Import({WebServiceConfig.class})
 @EnableAutoConfiguration
-public class SslSoapProducerApplication {
+public class CxfContractFirstSoapProducerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SslSoapProducerApplication.class, args);
+		SpringApplication.run(CxfContractFirstSoapProducerApplication.class, args);
 	}
 }
