@@ -17,12 +17,11 @@ class PersonMapperTest extends Specification {
 
     def "should map PersonEntity into Person"() {
         given:
-            def personEntity = PersonEntity.builder()
-                    .firstname('John')
-                    .lastname('Smith')
-                    .login('John.Smith')
-                    .password('secret')
-                    .build()
+            def personEntity = PersonEntity()
+            personEntity.firstname('John')
+            personEntity.lastname('Smith')
+            personEntity.login('John.Smith')
+            personEntity.password('secret')
             personEntity.setId(10L)
         when:
             def person = personMapper.map(personEntity)

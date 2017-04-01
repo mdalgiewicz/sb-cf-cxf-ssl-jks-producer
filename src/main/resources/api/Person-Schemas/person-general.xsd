@@ -43,13 +43,19 @@
         </p:complexType>
     </p:element>
     
-    <p:element name="GetAllPersonInfoRequest"/>
+    <p:element name="GetAllPersonInfoRequest" type="Void"/>
+
     <p:element name="GetAllPersonInfoResponse">
         <p:complexType>
             <p:sequence>
-                <p:element name="personsInfo" type="datatypes:PersonInfo" maxOccurs="unbounded" minOccurs="0"/>
+                <p:element maxOccurs="unbounded" minOccurs="0" nillable="true" name="persons" type="datatypes:PersonInfo"/>
             </p:sequence>
         </p:complexType>
     </p:element>
+
+    <p:complexType name="Void">
+        <p:sequence>
+        </p:sequence>
+    </p:complexType>
 
 </p:schema>

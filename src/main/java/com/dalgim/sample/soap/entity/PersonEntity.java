@@ -10,7 +10,6 @@ import javax.persistence.Entity;
  */
 @Getter
 @Setter
-@Builder
 @Entity
 public class PersonEntity extends AbstractEntity {
 
@@ -18,4 +17,7 @@ public class PersonEntity extends AbstractEntity {
     private String password;
     private String firstname;
     private String lastname;
+
+    public PersonEntity() {
+    }
 }

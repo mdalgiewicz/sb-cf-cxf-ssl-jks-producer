@@ -57,7 +57,7 @@
     </wsdl:portType>
 
     <wsdl:binding name="PersonRegistryPortBinding" type="person:PersonRegistry">
-        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
         <wsdl:operation name="GetPersonInfo">
             <wsdl:input>
                 <soap:body use="literal"/>

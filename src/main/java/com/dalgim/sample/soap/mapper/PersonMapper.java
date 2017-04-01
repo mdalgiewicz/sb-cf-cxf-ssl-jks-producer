@@ -31,12 +31,12 @@ public class PersonMapper implements ObjectMapper<Person, PersonEntity> {
         if (person == null) {
             return null;
         }
+        PersonEntity personEntity = new PersonEntity();
 
-        return PersonEntity.builder()
-                .firstname(person.getFirstname())
-                .lastname(person.getLastname())
-                .login(person.getLogin())
-                .password(person.getPassword())
-                .build();
+        personEntity.setFirstname(person.getFirstname());
+        personEntity.setLastname(person.getLastname());
+        personEntity.setLogin(person.getLogin());
+        personEntity.setPassword(person.getPassword());
+        return personEntity;
     }
 }

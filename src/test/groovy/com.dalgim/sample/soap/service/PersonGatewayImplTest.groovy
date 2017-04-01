@@ -42,18 +42,16 @@ class PersonGatewayImplTest extends Specification {
 
     def "should returns all Persons"() {
         given:
-            def person1 = PersonEntity.builder()
-                    .firstname('John1')
-                    .lastname('Smith1')
-                    .login('John1.Smith1')
-                    .password('seret')
-                    .build()
-            def person2 = PersonEntity.builder()
-                    .firstname('John2')
-                    .lastname('Smith2')
-                    .login('John2.Smith2')
-                    .password('seret')
-                    .build()
+            def person1 = PersonEntity()
+            person1.firstname('John1')
+            person1.lastname('Smith1')
+            person1.login('John1.Smith1')
+            person1.password('seret')
+            def person2 = PersonEntity()
+            person2.firstname('John2')
+            person2.lastname('Smith2')
+            person2.login('John2.Smith2')
+            person2.password('seret')
         and:
             personRepository.findAll() >> [person1, person2]
         when:
@@ -68,12 +66,11 @@ class PersonGatewayImplTest extends Specification {
     def "should find Person by login"() {
         given:
             def login = "John1.Smith1"
-            def personEntity = PersonEntity.builder()
-                .firstname('John1')
-                .lastname('Smith1')
-                .login('John1.Smith1')
-                .password('seret')
-                .build()
+            def personEntity = PersonEntity()
+            personEntity.firstname('John1')
+            personEntity.lastname('Smith1')
+            personEntity.login('John1.Smith1')
+            personEntity.password('seret')
         and:
             personRepository.findByLogin(login) >> personEntity
         when:
