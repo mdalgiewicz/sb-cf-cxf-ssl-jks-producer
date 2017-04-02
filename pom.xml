@@ -129,8 +129,8 @@
 				<version>2.4.1</version>
 				<configuration>
 					<wsdlDirectory>${basedir}/src/main/resources/api/</wsdlDirectory>
-					<wsdlLocation>/api/Person1.0.wsdl</wsdlLocation>
-					<sourceDestDir>target/generated-sources/wsdlimport/Person1.0</sourceDestDir>
+					<wsdlLocation>/api/PersonRegistry.wsdl</wsdlLocation>
+					<sourceDestDir>target/generated-sources/soap/PersonRegistry</sourceDestDir>
 					<bindingDirectory>src/main/resources/api</bindingDirectory>
 					<args>
 						<arg>-extension</arg>
@@ -167,7 +167,7 @@
 						</goals>
 						<configuration>
 							<sources>
-								<source>target/generated-sources/wsdlimport/Person1.0</source>
+								<source>target/generated-sources/soap/PersonRegistry</source>
 							</sources>
 						</configuration>
 					</execution>

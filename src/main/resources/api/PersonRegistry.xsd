@@ -6,6 +6,6 @@
           version="1.0">
 
     <p:import namespace="http://www.dalgim.com/namespace/personservice/general"
-              schemaLocation="Person-Schemas/person-general.xsd"/>
+              schemaLocation="schema/person-general.xsd"/>
 
 </p:schema>
