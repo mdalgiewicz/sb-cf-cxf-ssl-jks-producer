@@ -11,7 +11,7 @@ import java.util.Collection;
  */
 @Component
 @RequiredArgsConstructor
-public class GetAllPersonInfoResponseMapper implements EndpointObjectOutMapper<GetAllPersonInfoResponse, Collection<Person>> {
+public class GetAllPersonInfoResponseMapper implements NoReverseMapper<GetAllPersonInfoResponse, Collection<Person>> {
 
     private final GetPersonInfoResponseMapper getPersonInfoResponseMapper;
 

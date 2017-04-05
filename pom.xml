@@ -26,7 +26,8 @@
 		<spock.version>1.0-groovy-2.4</spock.version>
 		<groovy.version>2.4.4</groovy.version>
 		<guava.version>21.0</guava.version>
-		<cxf.version>3.1.7</cxf.version>
+		<cxf.version>3.1.10</cxf.version>
+		<cglib.version>3.2.5</cglib.version>
 	</properties>
 
 	<dependencies>
@@ -87,7 +88,7 @@
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib-nodep</artifactId>
-			<version>3.2.5</version>
+			<version>${cglib.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

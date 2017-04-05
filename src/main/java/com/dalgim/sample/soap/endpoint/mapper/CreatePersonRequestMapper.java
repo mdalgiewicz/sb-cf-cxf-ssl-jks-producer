@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * Created by dalgim on 29.03.2017.
  */
 @Component
-public class CreatePersonRequestMapper implements EndpointObjectInMapper<CreatePersonRequest, Person> {
+public class CreatePersonRequestMapper implements NoReverseMapper<Person, CreatePersonRequest> {
 
     @Override
     public Person map(CreatePersonRequest endpointModel) {

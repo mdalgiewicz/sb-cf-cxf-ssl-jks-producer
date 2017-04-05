@@ -31,8 +31,8 @@ public class PersonMapper implements ObjectMapper<Person, PersonEntity> {
         if (person == null) {
             return null;
         }
-        PersonEntity personEntity = new PersonEntity();
 
+        PersonEntity personEntity = new PersonEntity();
         personEntity.setFirstname(person.getFirstname());
         personEntity.setLastname(person.getLastname());
         personEntity.setLogin(person.getLogin());

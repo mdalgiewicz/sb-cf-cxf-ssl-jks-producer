@@ -13,6 +13,7 @@ import com.dalgim.sample.soap.endpoint.mapper.CreatePersonResponseMapper;
 import com.dalgim.sample.soap.endpoint.mapper.GetAllPersonInfoResponseMapper;
 import com.dalgim.sample.soap.endpoint.mapper.GetPersonInfoResponseMapper;
 import com.dalgim.sample.soap.service.PersonGateway;
+import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import javax.jws.WebService;
 import java.util.Collection;
@@ -33,6 +34,8 @@ public class PersonRegistryImpl implements PersonRegistry {
 
     @Override
     public GetPersonInfoResponse getPersonInfo(GetPersonInfoRequest getPersonInfoRequest) {
+        Preconditions.checkNotNull(getPersonInfoRequest, "GetPersonInfoRequest cannot be null!");
+
         return personGateway.findPersonByLogin(getPersonInfoRequest.getLogin())
                 .map(getPersonInfoResponseMapper::map)
                 .orElse(null);
@@ -40,6 +43,8 @@ public class PersonRegistryImpl implements PersonRegistry {
 
     @Override
     public CreatePersonResponse createPerson(CreatePersonRequest createPersonRequest) {
+        Preconditions.checkNotNull(createPersonRequest, "CreatePersonRequest cannot be null!");
+
         Person createdPerson = personGateway.createPerson(createPersonRequestMapper.map(createPersonRequest));
         return createPersonResponseMapper.map(createdPerson);
     }

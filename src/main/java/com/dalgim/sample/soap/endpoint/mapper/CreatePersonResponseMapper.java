@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by dalgim on 29.03.2017.
  */
 @Component
-public class CreatePersonResponseMapper implements EndpointObjectOutMapper<CreatePersonResponse, Person> {
+public class CreatePersonResponseMapper implements NoReverseMapper<CreatePersonResponse, Person> {
 
     @Override
     public CreatePersonResponse map(Person domainModel) {
