@@ -1,4 +1,8 @@
 **Spring Boot Contract First CXF Soap Producer**
+-Spring Boot
+-Cxf, Contract First Soap Consumer
+-SSL (JKS)
+-Lombok
 
 Tworzenie keystore"
 keytool -genkeypair -alias producerkey -keyalg RSA -dname "CN=localhost,OU=Example Org Unit,O=Dalgim,L=Warsaw,S=Warsaw,C=PL" -keypass P@ssw0rd -keystore producer-keystore.jks -storepass P@SSWORD
