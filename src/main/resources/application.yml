@@ -1,11 +1,9 @@
 server:
   port: 8443
   ssl:
-    key-store: 'classpath:ssl/producer-keystore.jks'
-    key-store-password: P@SSWORD
-    key-password: P@ssw0rd
-    trust-store: 'classpath:ssl/producer-truststore.jks'
-    trust-store-password: P@ssw0rd
-    client-auth: need
-    key-store-type: jks
-    trust-store-type: jks
+    "key-store" : 'classpath:ssl/server.jks'
+    "key-store-password" : 'password'
+    "key-password" : 'password'
+    "client-auth" : 'need'
+    "trust-store" : 'classpath:ssl/server.jks'
+    "trust-store-password" : 'password'

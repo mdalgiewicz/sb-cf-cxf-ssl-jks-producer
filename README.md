@@ -1,15 +1,36 @@
 **Spring Boot Contract First CXF Soap Producer**
 -Spring Boot
 -Cxf, Contract First Soap Consumer
--SSL (JKS)
+-Two way SSL based on Java KeyStore
 -Lombok
 
-Tworzenie keystore"
-keytool -genkeypair -alias producerkey -keyalg RSA -dname "CN=localhost,OU=Example Org Unit,O=Dalgim,L=Warsaw,S=Warsaw,C=PL" -keypass P@ssw0rd -keystore producer-keystore.jks -storepass P@SSWORD
 
-Wyeksportowanie certyfikatu serwera
-keytool -exportcert -alias producerkey -file producer-public.cer -keystore producer-keystore.jks -storepass P@SSWORD
+## Keystore i Truststore w jednym .jks
+### Utworzenie klucza i certyfikatu serwera
+keytool -genkeypair -alias serverkey -keyalg RSA -keypass password -keystore server.jks -storepass password
+### Utworzenie klucza i certyfikatu klienta
+keytool -genkeypair -alias clientkey -keyalg RSA -keypass password -keystore client.jks -storepass password
+### Export certyfikatu serwera do pliku
+keytool -exportcert -alias serverkey -file server-public.cer -keystore server.jks -storepass password
+### Export certyfikatu klienta do pliku
+keytool -exportcert -alias clientkey -file client-public.cer -keystore client.jks -storepass password
+## Import certyfikatu klienta do keystore serwera
+keytool -importcert -keystore server.jks -alias clientcert -file client-public.cer -storepass password -noprompt
+## Import certyfikatu serwera do keysrore klienta
+keytool -importcert -keystore client.jks -alias servercert -file server-public.cer -storepass password -noprompt
 
-Utworzenie truststore dla klienta usługi, dodanie certyfikatu serwera
-keytool -import -file consumer-public.cer -alias consumer -keystore producer-truststore.jks
+## Keystore i Trust store oddzielnie
+### Utworzenie klucza i certyfikatu serwera
+keytool -genkeypair -alias serverkey -keyalg RSA -keypass password -keystore server-keystore.jks -storepass password
+### Utworzenie klucza i certyfikatu klienta
+keytool -genkeypair -alias clientkey -keyalg RSA -keypass password -keystore client-keystore.jks -storepass password
+### Export certyfikatu serwera do pliku
+keytool -exportcert -alias serverkey -file server-public.cer -keystore server-keystore.jks -storepass password
+### Export certyfikatu klienta do pliku
+keytool -exportcert -alias clientkey -file client-public.cer -keystore client-keystore.jks -storepass password
+### Import certyfikatu serwera do oddzielnego keystore (truststore dla klienta)
+keytool -importcert -keystore client-truststore.jks -alias servercert -file server-public.cer -storepass password -noprompt
+### Import certyfikatu klienta do oddzielnego keystore (truststore dla serwera)
+keytool -importcert -keystore server-truststore.jks -alias clientcert -file client-public.cer -storepass password -noprompt
+
 
