@@ -34,3 +34,7 @@ keytool -importcert -keystore client-truststore.jks -alias servercert -file serv
 keytool -importcert -keystore server-truststore.jks -alias clientcert -file client-public.cer -storepass password -noprompt
 
 
+##Użycie wyeksportowanego certyfikatu p12 z klienta
+keytool -importcert -keystore server-truststore.jks -alias clientcert -file client-cert.crt -storepass password -noprompt
+
+

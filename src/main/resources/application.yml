@@ -1,9 +1,9 @@
 server:
   port: 8443
   ssl:
-    "key-store" : 'classpath:ssl/server.jks'
+    "key-store" : 'classpath:ssl-div/server-keystore.jks'
     "key-store-password" : 'password'
     "key-password" : 'password'
     "client-auth" : 'need'
-    "trust-store" : 'classpath:ssl/server.jks'
+    "trust-store" : 'classpath:ssl-div/server-truststore.jks'
     "trust-store-password" : 'password'
