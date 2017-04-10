@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 
 /**
- * Created by dalgim on 01.04.2017.
+ * Created by Mateusz Dalgiewicz on 01.04.2017.
  */
 @Component
 @RequiredArgsConstructor

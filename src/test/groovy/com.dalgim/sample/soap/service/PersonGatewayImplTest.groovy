@@ -7,7 +7,7 @@ import com.dalgim.sample.soap.repository.PersonRepository
 import spock.lang.Specification
 
 /**
- * Created by dalgim on 25.03.2017.
+ * Created by Mateusz Dalgiewicz on 25.03.2017.
  */
 class PersonGatewayImplTest extends Specification {
 

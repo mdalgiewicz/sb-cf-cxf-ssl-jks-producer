@@ -19,7 +19,7 @@ import javax.jws.WebService;
 import java.util.Collection;
 
 /**
- * Created by dalgim on 26.03.2017.
+ * Created by Mateusz Dalgiewicz on 26.03.2017.
  */
 @WebService(
         targetNamespace = "http://www.dalgim.com/namespace/personservice/",

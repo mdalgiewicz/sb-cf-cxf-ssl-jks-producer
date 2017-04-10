@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 /**
- * Created by dalgim on 25.03.2017.
+ * Created by Mateusz Dalgiewicz on 25.03.2017.
  */
 @Service
 @Transactional

@@ -5,7 +5,7 @@ import com.dalgim.sample.soap.domain.Person;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by dalgim on 29.03.2017.
+ * Created by Mateusz Dalgiewicz on 29.03.2017.
  */
 @Component
 public class CreatePersonRequestMapper implements NoReverseMapper<Person, CreatePersonRequest> {

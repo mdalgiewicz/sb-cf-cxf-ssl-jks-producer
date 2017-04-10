@@ -4,7 +4,7 @@ import com.dalgim.sample.soap.entity.PersonEntity;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Created by dalgim on 25.03.2017.
+ * Created by Mateusz Dalgiewicz on 25.03.2017.
  */
 public interface PersonRepository extends CrudRepository<PersonEntity, Long> {
 

@@ -6,7 +6,7 @@ import org.assertj.core.util.Lists
 import spock.lang.Specification
 
 /**
- * Created by dalgim on 01.04.2017.
+ * Created by Mateusz Dalgiewicz on 01.04.2017.
  */
 class GetAllPersonInfoResponseMapperTest extends Specification {
 

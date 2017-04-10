@@ -1,7 +1,7 @@
 package com.dalgim.sample.soap.endpoint.mapper;
 
 /**
- * Created by dalgim on 29.03.2017.
+ * Created by Mateusz Dalgiewicz on 29.03.2017.
  */
 public interface NoReverseMapper<K, E> {
 

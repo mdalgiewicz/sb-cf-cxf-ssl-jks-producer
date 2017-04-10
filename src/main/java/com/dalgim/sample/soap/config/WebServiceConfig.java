@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by dalgim on 26.03.2017.
+ * Created by Mateusz Dalgiewicz on 26.03.2017.
  */
 @Configuration
 public class WebServiceConfig {

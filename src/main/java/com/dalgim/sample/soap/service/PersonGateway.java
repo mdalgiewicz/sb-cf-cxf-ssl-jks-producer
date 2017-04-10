@@ -1,12 +1,11 @@
 package com.dalgim.sample.soap.service;
 
 import com.dalgim.sample.soap.domain.Person;
-
 import java.util.Collection;
 import java.util.Optional;
 
 /**
- * Created by dalgim on 25.03.2017.
+ * Created by Mateusz Dalgiewicz on 25.03.2017.
  */
 public interface PersonGateway {
 

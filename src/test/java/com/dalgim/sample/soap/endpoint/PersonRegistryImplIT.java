@@ -16,7 +16,7 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
 /**
- * Created by dalgim on 01.04.2017.
+ * Created by Mateusz Dalgiewicz on 01.04.2017.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(

@@ -2,11 +2,10 @@ package com.dalgim.sample.soap.endpoint.mapper
 
 import com.dalgim.namespace.personservice.general.GetPersonInfoResponse
 import com.dalgim.sample.soap.domain.Person
-import com.dalgim.sample.soap.endpoint.mapper.GetPersonInfoResponseMapper
 import spock.lang.Specification
 
 /**
- * Created by dalgim on 29.03.2017.
+ * Created by Mateusz Dalgiewicz on 29.03.2017.
  */
 class GetPersonInfoResponseMapperTest extends Specification {
 

@@ -2,11 +2,10 @@ package com.dalgim.sample.soap.endpoint.mapper
 
 import com.dalgim.namespace.personservice.datatypes.PersonInfo
 import com.dalgim.namespace.personservice.general.CreatePersonRequest
-import com.dalgim.sample.soap.endpoint.mapper.CreatePersonRequestMapper
 import spock.lang.Specification
 
 /**
- * Created by dalgim on 29.03.2017.
+ * Created by Mateusz Dalgiewicz on 29.03.2017.
  */
 class CreatePersonRequestMapperTest extends Specification {
 
